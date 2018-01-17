@@ -1,0 +1,8 @@
+<h3>Tasks Done</h3>
+<ul class="list-group">
+  <li
+    class="list-group-item"
+    *ngFor="let task of tasks">
+    {{ task.body }} | <a href="#" (click)="onClick_openTask(task)">Open</a>
+  </li>
+</ul>
