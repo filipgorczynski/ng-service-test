@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, EventEmitter, OnInit, Input, Output } from '@angular/core';
 import { TaskService } from '../services/task.service';
 import { Task } from '../models/task.model';
 
@@ -8,19 +8,19 @@ import { Task } from '../models/task.model';
   styleUrls: ['./tasks-done.component.css']
 })
 export class TasksDoneComponent implements OnInit {
-  @Input() tasks: Task[] = [];
+  tasks: Task[] = [];
 
   constructor(
     private taskService: TaskService
   ) {}
 
   ngOnInit() {
-    this.tasks = this.tasks.filter(task => task.isDone);
+    this.tasks = this.taskService.tasks;
   }
 
   onClick_openTask(task: Task) {
-    console.log('onClick_openTask: ', task);
     this.taskService.toggleTask(task);
+    this.taskService.tasksUpdate.emit(task);
   }
 
 }

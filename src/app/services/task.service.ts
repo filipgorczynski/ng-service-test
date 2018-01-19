@@ -22,12 +22,12 @@ export class TaskService {
       isDone: false
     }
   ];
-  tasksUpdate = new EventEmitter<Task[]>();
+  tasksUpdate = new EventEmitter<Task>();
 
   toggleTask(taskToChange: Task) {
     this.tasks.map((task, index) => {
       if (task.body === taskToChange.body) {
-        this.tasks[index].isDone = !this.tasks[index];
+        this.tasks[index].isDone = !this.tasks[index].isDone;
       }
       return task;
     });

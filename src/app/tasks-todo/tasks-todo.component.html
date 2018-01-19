@@ -1,8 +1,11 @@
 <h3>Tasks To Do</h3>
 <ul class="list-group">
-  <li
-    class="list-group-item"
-    *ngFor="let task of tasks">
-    {{ task.body }} | <a href="#" (click)="onClick_closeTask(task)">Close</a>
-  </li>
+  <ng-container *ngFor="let task of tasks">
+    <li
+      *ngIf="!task.isDone"
+      class="list-group-item"
+    >
+      {{ task.body }} | <a href="#" (click)="onClick_closeTask(task)">Close</a>
+    </li>
+  </ng-container>
 </ul>
